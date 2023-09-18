@@ -66,7 +66,7 @@ body{
     padding: 15px;
     border-radius: 50px;
     background-color: #6532F8;
-    background-image: url(/arrow.png);
+    background-image: url(arrow.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     transition: all 0.3s ease-in-out;
@@ -84,105 +84,13 @@ body{
 }
 
 .films {
-    --background: #303952;
-    --text: #ffffff;
-    --check: #cc29f0;
-    --disabled: #87808e;
-    --width: 100%;
-    --height: 180px;
-    --border-radius: 10px;
     padding: 28px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    background: var(--background);
-    width: var(--width);
-    border-radius: var(--border-radius);
+    background: #303952;
+    width: 100%;
+    border-radius: 10px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
-}
-
-.check-btn {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative;
-    height: 15px;
-    width: 15px;
-    outline: none;
-    border: 0;
-    margin: 0 15px 0 0;
-    cursor: pointer;
-    background: var(--background);
-}
-
-.film-label {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.4px;
-    word-break: break-all;
-    margin-left: 10px;
-    color: var(--text);
-    position: relative;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-
-@media (max-width: 768px) and (min-width: 576px) {
-    .container {
-        margin: 50px 0 0 0;
-    }   
-    .spisok {
-        margin: 0 0 30px 0;
-    }
-    .spisok__info{
-        justify-content: center;
-    }
-    .container_blok{
-        max-width: none;
-        width: 100%;
-    }
-    .smotr__title{
-        font-size: 80px;
-        line-height: 48px;
-        justify-content: center;
-    }
-    .movie__wrapper{
-        width: 95%;
-    }
-    .form__input{
-        width: 85%;
-        font-size: 26px;
-        line-height: 40px;
-    }
-}
-@media (max-width: 575px) {
-    .container {
-        margin: 40px 0 0 0;
-    }    
-    .spisok {
-        margin: 0 0 25px 0;
-    }
-    .spisok__info{
-        justify-content: center;
-    }
-    .container_blok{
-        max-width: none;
-        width: 100%;
-    }
-    .smotr__title{
-        font-size: 50px;
-        line-height: 28px;
-        justify-content: center;
-    }
-    .movie__wrapper{
-        width: 96%;
-    }
-    .form__input{
-        width: 75%;
-        font-size: 26px;
-        line-height: 40px;
-    }
 }
