@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список фильмов</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	
+    <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="reset.css">
+</head>
+<body>
+    <div class="container">
+        <section class="spisok ">
+            <div class="container_blok">
+                <div class="spisok__info">
+                    <div class="spisok__info-movie">Список фильмов</div>
+                    <div class="spisok__info-yaer">2023</div>
+                </div>
+                <div class="smotr__title-wrapper">
+                    <h1 div class="smotr__title">Посмотреть</h1>
+                </div>
+            </div>
+        </section>
+        <section class="movies">
+            <div class="container_blok">
+                <div class="movie__wrapper">
+                        <input class="js_form__input form__input"
+                         type="text"
+                         name="name"
+                         placeholder="Добавить фильм">
+                        <button class="js_movie__add movie__add" 
+                        disabled></button>
+
+                 <div class="js_error__output error__output"></div>
+                    <!--Ошибка-->
+                    <div class="list__films">
+                        <ul class="js_list__films films"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
