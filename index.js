@@ -27,8 +27,13 @@ let movies = [];
 if(Array.isArray(filmsFormStorage)) {
 	movies = filmsFormStorage;
 }
-// 
-const init = () => orderFilmsList(movies);
+
+class Movie {
+    constructor(title, status) {
+        this.title = title;
+        this.status = status;
+    }
+}
 
 const addMovie = () => {
 	if (!checkInput()) { 
@@ -36,7 +41,6 @@ const addMovie = () => {
     }
     addNewFilmsList();
     saveFilmsToLocal(movies);
-	orderFilmsList(movies);
 	clearFilmsInput();
 	switchFocusToFilmsInput();
 };
@@ -60,51 +64,45 @@ function saveFilmsToLocal(movies) {
 };
 // Получение фильма из поля ввода, сразу возвращается объект фильма
 const getFilmsFromUser = () => { 
-    return new Movie(movieInputNode.value, getCurrentDate(), STATUS.not_viewed);
-};
-// Отображение списка фильмов
-const orderFilmsList = (list_films) => {
-	let movieMarkup = '';
-	
-	
+    return new Movie(movieInputNode.value, STATUS.not_viewed);
 };
 
 // Удаление фильма
-const deleteFilms = (movie_index) => {
-	movies.splice(movie_index,1);
+const deleteFilm = (film_index) => {
+	movies.splice(film_index,1);
 	saveFilmsToLocal(movies);
-	orderFilmsList(movies);
+	
 };
 
 //Функция обновления статуса фильма и рендера
-const changeMovieViewStatus = (movie_index) => {
-	(movies[movie_index].status === STATUS.viewed) ? 
-		movies[movie_index].status = STATUS.not_viewed : 
-		movies[movie_index].status = STATUS.viewed
-	saveFilmsToLocal(movies);
-	orderFilmsList(movies);
-}
+const changeMovieViewStatus = (film_index) => {
+    const film = movies[film_index];
+    film.status = (film.status === STATUS.viewed) ? STATUS.not_viewed : STATUS.viewed;
+    saveFilmsToLocal(movies);
+};
 
 // загружаем в память браузера через LocalStorage
 const clearFilmsInput = () => movieInputNode.value = '';
 const switchFocusToFilmsInput = () => movieInputNode.focus();
 
 // Рендер сообщения об ошибке
-const renderError = (message_error) => {
-	errorOutputNode.innerText =  `${message_error}`;
-	errorOutputNode.classList.toggle('visible');
-	clearFilmsInput();
-	switchFocusToFilmsInput();
-} 
+const renderError = (error_message) => {
+    errorOutputNode.innerText = error_message;
+    errorOutputNode.classList.toggle('visible');
+    clearFilmsInput();
+    switchFocusToFilmsInput();
+};
 
-init()
 // ОТРАБОТЧИК 
 buttonNode.addEventListener('click', addMovie);
 movieInputNode.addEventListener('keypress', function (event) {
-	(event.keyCode == 13) ? addMovie() : "";
+	if (event.keyCode == 13)
+	 addMovie();
 });
 listFilmsNode.addEventListener('click', function(e){
-	(e.target.tagName === 'IMG') ? deleteMovie(e.target.dataset.movie) : "";
-	(e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') ? changeMovieViewStatus(e.target.dataset.check) : ""
+	if 	(e.target.tagName === 'IMG') {
+		deleteMovie(e.target.dataset.movie);
+	} else if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') {
+		changeMovieViewStatus(e.target.dataset.check);
+	}
 });
-// 
